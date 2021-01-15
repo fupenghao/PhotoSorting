@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-#问题：
-# 1.无法识别目录下的目录
-# 2.无法识别文件格式
+#Issues：
+# 1.Can not identify folder in the working directory.
+# 2.Can not classify types of files.
 import os
 import shutil
 
@@ -11,22 +11,22 @@ folder_Number = 0
 files_per_folder = 300
 b = 0
 #path = os.getcwd()
-path = input("请输入筛选路径:\n")
-print("开始整理文件，请勿关闭终端")
+path = input("Pls type in the Working Directory:\n")
+print("Sorting Started....")
 file_lists = []
 #filelists = os.listdir(path)
 #print (path)
 #print(filelists)
-#获取当前目录所有文件数量
+#To get the file numbers
 for root, dirs, files in os.walk(path):
     for file in files:
         files_Number += 1
         file_lists.append(file)
 
-print ("共有"+str(files_Number)+"个文件") 
+print ("There are "+str(files_Number)+" Photos") 
 #print (len(file_lists))
 #print (file_lists)
-#根据文件数量创建文件夹
+#To create folders
 if files_Number < files_per_folder:
     folder_Number = 1
     folder_path = path +"\\100Photo"
@@ -36,7 +36,7 @@ if files_Number < files_per_folder:
             shutil.move(path + "\\"+ file, folder_path)  
 elif files_Number > files_per_folder:
     folder_Number = int(files_Number/files_per_folder) + 1
-    print ("需要创建"+str(folder_Number)+"个文件夹")
+    print (str(folder_Number)+" folders will be created")
     while folder_Number > 0:
         a = str(100 + b)
         folder_path = path +"\\"+ a + "Photo"
@@ -70,7 +70,4 @@ elif files_Number > files_per_folder:
                     print(y)
                     break
 
-print("整理结束")
-#将文件名存入数组
-#创建目录目录名100Photo
-#每个目录放300个文件
+print("Sorting Finished")
